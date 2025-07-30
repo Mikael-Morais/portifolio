@@ -81,7 +81,7 @@ A estrutura de pastas segue o padrão do Next.js App Router:
 
 ## 📫 Contato
 
-**[Seu Nome]**
+**Mikael Morais**
 
 - **LinkedIn:** https://www.linkedin.com/in/mikael-morais-677b9a332/
 - **Email:** yagopx3@gmail.com

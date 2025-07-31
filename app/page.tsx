@@ -46,37 +46,37 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "E-commerce Platform",
+      title: "Plataforma de logística",
       description:
-        "Plataforma completa de e-commerce com painel administrativo, sistema de pagamentos e gestão de estoque.",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      image: "/placeholder.svg?height=200&width=400",
+        "Sistema de gerenciamento de lodo das ETE com revenda de produtos para o pequeno agricultor",
+      technologies: ["Next.js", "Node.js", "PostgreSQL"],
+      image: "/ete1.png?height=200&width=400",
       github: "#",
-      demo: "#",
     },
     {
-      title: "Task Management App",
-      description: "Aplicativo de gerenciamento de tarefas com colaboração em tempo real e notificações push.",
-      technologies: ["Next.js", "TypeScript", "Prisma", "Socket.io"],
-      image: "/placeholder.svg?height=200&width=400",
+      title: "Site da Olimpíada de Matemática Avançada",
+      description: "Site para cadastro e informações sobre a Olimpíada de Matemática Avançada",
+      technologies: ["Node.js", "Express", "SQLite", "Express"],
+      image: "/oma.png?height=200&width=400",
       github: "#",
-      demo: "#",
+      
     },
     {
-      title: "Data Analytics Dashboard",
-      description: "Dashboard interativo para análise de dados com gráficos dinâmicos e relatórios personalizados.",
-      technologies: ["Python", "Django", "Chart.js", "Redis"],
-      image: "/placeholder.svg?height=200&width=400",
+      title: "Plataforma de reciclagem gamificada",
+      description: "A ZeluS é uma plataformaa que induz a reciclagem através de um sistema de pontos e recompensas.",
+      technologies: ["CSS", "HTML", "JavaScript", "SQLite"],
+      image: "/zelus.png?height=200&width=400",
       github: "#",
-      demo: "#",
+      demo: "https://deploy-desafio4-trilhas-5p18.vercel.app/landing/index.html",
+      
     },
     {
-      title: "Mobile Banking App",
-      description: "Aplicativo bancário mobile com autenticação biométrica e transferências instantâneas.",
-      technologies: ["React Native", "Firebase", "Node.js", "JWT"],
-      image: "/placeholder.svg?height=200&width=400",
+      title: "Saúde Conectada MA",
+      description: "Platafoma de agendamento de consultas médicas e telemedicinas, além de realizar triagens de sintomas.",
+      technologies: ["JavaScript", "MySQL", "HTML", "JWT"],
+      image: "/saudema.png?height=200&width=400",
       github: "#",
-      demo: "#",
+      demo: 'https://desafio-5-1ut2.onrender.com',    
     },
   ]
 
@@ -91,7 +91,9 @@ export default function Portfolio() {
       >
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <motion.div whileHover={{ scale: 1.1 }} className="text-xl font-bold text-purple-400 cursor-pointer">
-            {"<Dev/>"}
+            <a onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                {"<Dev/>"}
+                </a>
           </motion.div>
           <div className="hidden md:flex space-x-6">
             {["Sobre", "Habilidades", "Projetos", "Contato"].map((item, index) => (
@@ -178,19 +180,23 @@ export default function Portfolio() {
               className="flex justify-center space-x-4"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button className="bg-purple-600 hover:bg-purple-700">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Entre em Contato
-                </Button>
+                <a href="mailto:yagopx3@gmail.com" target="_blank" rel="noopener noreferrer">
+                  <Button className="bg-purple-600 hover:bg-purple-700">
+                    <Mail className="mr-2 h-4 w-4" />
+                    Entre em Contato
+                  </Button>
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  variant="outline"
-                  className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  GitHub
-                </Button>
+                <a href="https://github.com/Mikael-Morais" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="outline"
+                    className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
+                  >
+                    <Github className="mr-2 h-4 w-4" />
+                    GitHub
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
           </div>
@@ -349,21 +355,23 @@ export default function Portfolio() {
                     <CardDescription className="text-gray-300">{project.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, techIndex) => (
-                        <motion.div
-                          key={tech}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: techIndex * 0.1 }}
-                          viewport={{ once: true }}
-                        >
-                          <Badge variant="outline" className="border-purple-400 text-purple-300">
-                            {tech}
-                          </Badge>
-                        </motion.div>
-                      ))}
-                    </div>
+                   <div className="flex flex-wrap gap-2 mb-4">
+                {project.technologies.map((tech, techIndex) => (
+                  <motion.div
+                    key={`${tech}-${techIndex}`} // AQUI A MUDANÇA
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: techIndex * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Badge variant="outline" className="border-purple-400 text-purple-300">
+                      {tech}
+                    </Badge>
+                  </motion.div>
+                ))}
+              </div>
+                  </CardContent>
+                  <CardContent>
                     <div className="flex space-x-2">
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Button
@@ -376,10 +384,15 @@ export default function Portfolio() {
                         </Button>
                       </motion.div>
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button size="sm" className="bg-purple-600 hover:bg-purple-700">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Demo
-                        </Button>
+                      {project.demo && (
+                      <Button size="sm" className="bg-purple-600 hover:bg-purple-700" asChild>
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Demo
+                        </a>
+                     </Button>
+                      )}
+                      
                       </motion.div>
                     </div>
                   </CardContent>
@@ -420,15 +433,19 @@ export default function Portfolio() {
             className="flex justify-center space-x-6"
           >
             {[
-              { icon: Mail, text: "Email", bg: "bg-purple-600 hover:bg-purple-700" },
+              { icon: Mail, text: "Email",
+                href: "mailto:yagopx3@gmail.com",
+                bg: "bg-purple-600 hover:bg-purple-700" },
               {
                 icon: Linkedin,
                 text: "LinkedIn",
+                href: "https://www.linkedin.com/in/mikael-morais-677b9a332",
                 bg: "border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent",
               },
               {
                 icon: Github,
                 text: "GitHub",
+                href: "https://github.com/mikael-morais",
                 bg: "border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent",
               },
             ].map((item, index) => (
@@ -441,10 +458,12 @@ export default function Portfolio() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" variant={index === 0 ? "default" : "outline"} className={item.bg}>
-                  <item.icon className="mr-2 h-5 w-5" />
-                  {item.text}
-                </Button>
+              <a href={item.href} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant={index === 0 ? "default" : "outline"} className={item.bg}>
+                <item.icon className="mr-2 h-5 w-5" />
+                {item.text}
+              </Button>
+            </a>
               </motion.div>
             ))}
           </motion.div>
@@ -472,7 +491,9 @@ export default function Portfolio() {
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-bold text-purple-400 mb-4 cursor-pointer"
               >
+                <a onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                 {"<Dev/>"}
+                </a>
               </motion.div>
               <p className="text-gray-300 mb-4 max-w-md">
                 Transformando ideias em código e criando experiências digitais que fazem a diferença. Sempre em busca da
@@ -480,9 +501,9 @@ export default function Portfolio() {
               </p>
               <div className="flex space-x-4">
                 {[
-                  { icon: Github, href: "#", color: "hover:text-gray-400" },
-                  { icon: Linkedin, href: "#", color: "hover:text-blue-400" },
-                  { icon: Mail, href: "#", color: "hover:text-red-400" },
+                  { icon: Github, href: "https://github.com/Mikael-Morais", color: "hover:text-gray-400" },
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/mikael-morais-677b9a332", color: "hover:text-blue-400" },
+                  { icon: Mail, href: "mailto:yagopx3@gmail.com?subject=Contato&body=Olá,%20gostaria%20de%20conversar...", color: "hover:text-red-400" },
                 ].map((social, index) => (
                   <motion.a
                     key={index}

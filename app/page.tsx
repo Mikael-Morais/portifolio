@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Globe } from "lucide-react"
+import { Github, Linkedin, Mail, ExternalLink, Code2, Database, Globe, Server } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
@@ -37,8 +37,8 @@ export default function Portfolio() {
     { name: "TypeScript", category: "Frontend", icon: Code2 },
     { name: "React", category: "Frontend", icon: Code2 },
     { name: "Next.js", category: "Frontend", icon: Code2 },
-    { name: "Node.js", category: "Backend", icon: Database },
-    { name: "Python", category: "Backend", icon: Database },
+    { name: "Node.js", category: "Backend", icon: Server },
+    { name: "Python", category: "Backend", icon: Server },
     { name: "PostgreSQL", category: "Database", icon: Database },
     { name: "MongoDB", category: "Database", icon: Database },
     { name: "Mysql", category: "Database", icon: Database },
@@ -48,17 +48,17 @@ export default function Portfolio() {
     {
       title: "Plataforma de logística",
       description:
-        "Sistema de gerenciamento de lodo das ETE com revenda de produtos para o pequeno agricultor",
+        "Sistema de gerenciamento de lodo das ETE com revenda de produtos para o pequeno agricultor (em desenvolvimento)",
       technologies: ["Next.js", "Node.js", "PostgreSQL"],
       image: "/ete1.png?height=200&width=400",
-      github: "#",
+      demo: "https://solunsapp.vercel.app",
     },
     {
       title: "Site da Olimpíada de Matemática Avançada",
       description: "Site para cadastro e informações sobre a Olimpíada de Matemática Avançada",
-      technologies: ["Node.js", "Express", "SQLite", "Express"],
+      technologies: ["Node.js", "Express", "PostgreSQL", "Express"],
       image: "/oma.png?height=200&width=400",
-      github: "#",
+      demo: "https://omaoficial.com.br",
       
     },
     {
@@ -66,7 +66,7 @@ export default function Portfolio() {
       description: "A ZeluS é uma plataformaa que induz a reciclagem através de um sistema de pontos e recompensas.",
       technologies: ["CSS", "HTML", "JavaScript", "SQLite"],
       image: "/zelus.png?height=200&width=400",
-      github: "#",
+      github: "https://github.com/Mikael-Morais/Desafio4-Trilhas",
       demo: "https://deploy-desafio4-trilhas-5p18.vercel.app/landing/index.html",
       
     },
@@ -75,7 +75,7 @@ export default function Portfolio() {
       description: "Platafoma de agendamento de consultas médicas e telemedicinas, além de realizar triagens de sintomas.",
       technologies: ["JavaScript", "MySQL", "HTML", "JWT"],
       image: "/saudema.png?height=200&width=400",
-      github: "#",
+      github: "https://github.com/Mikael-Morais/desafio_5",
       demo: 'https://desafio-5-1ut2.onrender.com',    
     },
   ]
@@ -267,7 +267,7 @@ export default function Portfolio() {
                   <CardHeader>
                     <CardTitle className="text-purple-400 flex items-center">
                       {category === "Frontend" && <Globe className="mr-2 h-5 w-5" />}
-                      {category === "Backend" && <Database className="mr-2 h-5 w-5" />}
+                      {category === "Backend" && <Server className="mr-2 h-5 w-5" />}
                       {category === "Database" && <Database className="mr-2 h-5 w-5" />}
                       {category}
                     </CardTitle>
@@ -373,16 +373,21 @@ export default function Portfolio() {
                   </CardContent>
                   <CardContent>
                     <div className="flex space-x-2">
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
-                        >
-                          <Github className="mr-2 h-4 w-4" />
-                          Código
-                        </Button>
-                      </motion.div>
+                      {project.github && (
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent"
+                            asChild
+                          >
+                            <a href={project.github} target="_blank" rel="noopener noreferrer">
+                              <Github className="mr-2 h-4 w-4" />
+                              Código
+                            </a>
+                          </Button>
+                        </motion.div>
+                      )}
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       {project.demo && (
                       <Button size="sm" className="bg-purple-600 hover:bg-purple-700" asChild>
@@ -430,24 +435,12 @@ export default function Portfolio() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="flex justify-center space-x-6"
+            className="flex justify-center space-x-6 max-[530px]:flex-col max-[530px]:space-x-0 max-[530px]:space-y-4"
           >
             {[
-              { icon: Mail, text: "Email",
-                href: "mailto:yagopx3@gmail.com",
-                bg: "bg-purple-600 hover:bg-purple-700" },
-              {
-                icon: Linkedin,
-                text: "LinkedIn",
-                href: "https://www.linkedin.com/in/mikael-morais-677b9a332",
-                bg: "border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent",
-              },
-              {
-                icon: Github,
-                text: "GitHub",
-                href: "https://github.com/mikael-morais",
-                bg: "border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent",
-              },
+              { icon: Mail, text: "Email", href: "mailto:yagopx3@gmail.com", bg: "bg-purple-600 hover:bg-purple-700" },
+              { icon: Linkedin, text: "LinkedIn", href: "https://www.linkedin.com/in/mikael-morais-677b9a332", bg: "border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent" },
+              { icon: Github, text: "GitHub", href: "https://github.com/mikael-morais", bg: "border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white bg-transparent" },
             ].map((item, index) => (
               <motion.div
                 key={item.text}
@@ -458,12 +451,12 @@ export default function Portfolio() {
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.95 }}
               >
-              <a href={item.href} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant={index === 0 ? "default" : "outline"} className={item.bg}>
-                <item.icon className="mr-2 h-5 w-5" />
-                {item.text}
-              </Button>
-            </a>
+                <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant={index === 0 ? "default" : "outline"} className={item.bg}>
+                    <item.icon className="mr-2 h-5 w-5" />
+                    {item.text}
+                  </Button>
+                </a>
               </motion.div>
             ))}
           </motion.div>
@@ -499,7 +492,7 @@ export default function Portfolio() {
                 Transformando ideias em código e criando experiências digitais que fazem a diferença. Sempre em busca da
                 próxima inovação.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex justify-center md:justify-start space-x-4 mb-4 md:mb-0">
                 {[
                   { icon: Github, href: "https://github.com/Mikael-Morais", color: "hover:text-gray-400" },
                   { icon: Linkedin, href: "https://www.linkedin.com/in/mikael-morais-677b9a332", color: "hover:text-blue-400" },

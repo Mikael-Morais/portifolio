@@ -7,9 +7,6 @@
 
 Bem-vindo ao repositório do meu portfólio pessoal! Este projeto foi criado para apresentar minhas habilidades, projetos e jornada como desenvolvedor. Foi construído com as tecnologias mais modernas do ecossistema React, focando em performance, design responsivo e uma ótima experiência de usuário.
 
-<!-- Adicione um screenshot do seu portfólio aqui -->
-<!-- ![Screenshot do Portfólio](URL_DA_SUA_IMAGEM_AQUI) -->
-
 ## ✨ Sobre o Projeto
 
 Este portfólio é uma aplicação web interativa que destaca:

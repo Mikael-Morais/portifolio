@@ -39,6 +39,7 @@ export default function Portfolio() {
     { name: "Next.js", category: "Frontend", icon: Code2 },
     { name: "Node.js", category: "Backend", icon: Server },
     { name: "Python", category: "Backend", icon: Server },
+    { name: "Express.js", category: "Backend", icon: Server },
     { name: "PostgreSQL", category: "Database", icon: Database },
     { name: "MongoDB", category: "Database", icon: Database },
     { name: "Mysql", category: "Database", icon: Database },
